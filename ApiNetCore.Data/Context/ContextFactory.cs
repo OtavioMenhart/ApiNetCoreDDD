@@ -10,7 +10,7 @@ namespace ApiNetCore.Data.Context
     {
         public MyContext CreateDbContext(string[] args)
         {
-            string connectionString = "Server=localhost; Port=3306;Database=db_apinetcore; Uid=root; Pwd=ombr@170398";
+            string connectionString = "Server=localhost; Port=3306;Database=db_apinetcore; Uid=root; Pwd=local@123";
             var optionsBuilder = new DbContextOptionsBuilder<MyContext>();
             optionsBuilder.UseMySql(connectionString);
             return new MyContext(optionsBuilder.Options);
