@@ -1,6 +1,8 @@
 ﻿using ApiNetCore.Data.Context;
+using ApiNetCore.Data.Implementations;
 using ApiNetCore.Data.Repository;
 using ApiNetCore.Domain.Interfaces;
+using ApiNetCore.Domain.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -18,6 +20,7 @@ namespace ApiNetCore.CrossCutting.DependencyInjection
                 );
 
             serviceCollection.AddScoped(typeof(IRepository<>), typeof(BaseRepository<>));
+            serviceCollection.AddScoped<IUserRepository, UserImplementation>();
         }
     }
 }
