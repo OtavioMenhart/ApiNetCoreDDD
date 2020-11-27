@@ -1,6 +1,7 @@
 ﻿using ApiNetCore.Domain.Dtos;
 using ApiNetCore.Domain.Entities;
 using ApiNetCore.Domain.Interfaces.Services.User;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,6 +22,7 @@ namespace ApiNetCore.Application.Controllers
             _service = service;
         }
 
+        [AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult> Login([FromBody] LoginDto user)
         {
