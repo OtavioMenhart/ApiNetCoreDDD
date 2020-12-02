@@ -1,4 +1,5 @@
-﻿using ApiNetCore.Domain.Entities;
+﻿using ApiNetCore.Domain.Dtos.User;
+using ApiNetCore.Domain.Entities;
 using ApiNetCore.Domain.Interfaces.Services.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -60,7 +61,7 @@ namespace ApiNetCore.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpPost]
-        public async Task<ActionResult> Post([FromBody] UserEntity user)
+        public async Task<ActionResult> Post([FromBody] UserDtoCreate user)
         {
             if (!ModelState.IsValid)
             {
@@ -68,7 +69,7 @@ namespace ApiNetCore.Application.Controllers
             }
             try
             {
-                UserEntity result = await _service.Post(user);
+                UserDtoCreateResult result = await _service.Post(user);
                 if (result != null)
                 {
                     return Created(new Uri(Url.Link("GetWithId", new { id = result.Id })), result);
@@ -86,7 +87,7 @@ namespace ApiNetCore.Application.Controllers
 
         [Authorize("Bearer")]
         [HttpPut]
-        public async Task<ActionResult> Put([FromBody] UserEntity user)
+        public async Task<ActionResult> Put([FromBody] UserDtoUpdate user)
         {
             if (!ModelState.IsValid)
             {
@@ -94,7 +95,7 @@ namespace ApiNetCore.Application.Controllers
             }
             try
             {
-                UserEntity result = await _service.Put(user);
+                UserDtoUpdateResult result = await _service.Put(user);
                 if (result != null)
                 {
                     return Ok(result);

@@ -1,4 +1,5 @@
-﻿using ApiNetCore.Domain.Entities;
+﻿using ApiNetCore.Domain.Dtos.User;
+using ApiNetCore.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,10 +9,10 @@ namespace ApiNetCore.Domain.Interfaces.Services.User
 {
     public interface IUserService
     {
-        Task<UserEntity> Get(Guid id);
-        Task<IEnumerable<UserEntity>> GetAll();
-        Task<UserEntity> Post(UserEntity user);
-        Task<UserEntity> Put(UserEntity user);
+        Task<UserDtoCreate> Get(Guid id);
+        Task<IEnumerable<UserDtoCreate>> GetAll();
+        Task<UserDtoCreateResult> Post(UserDtoCreate user);
+        Task<UserDtoUpdateResult> Put(UserDtoUpdate user);
         Task<bool> Delete(Guid id);
     }
 }

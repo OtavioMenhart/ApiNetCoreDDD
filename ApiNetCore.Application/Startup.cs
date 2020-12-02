@@ -1,5 +1,7 @@
 using ApiNetCore.CrossCutting.DependencyInjection;
+using ApiNetCore.CrossCutting.Mappings;
 using ApiNetCore.Domain.Security;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
@@ -33,6 +35,15 @@ namespace ApiNetCore.Application
 
             ConfigureService.ConfigureDependenciesService(services);
             ConfigureRepository.ConfigureDependenciesRepository(services);
+
+            var config = new AutoMapper.MapperConfiguration(cfg => {
+                cfg.AddProfile(new DtoToModelProfile());
+                cfg.AddProfile(new EntityToDtoProfile());
+                cfg.AddProfile(new ModelToEntityProfile());
+            });
+
+            IMapper mapper = config.CreateMapper();
+            services.AddSingleton(mapper);
 
             SigningConfigurations signingConfigurations = new SigningConfigurations();
             services.AddSingleton(signingConfigurations);
