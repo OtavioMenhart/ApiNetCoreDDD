@@ -16,7 +16,8 @@ namespace ApiNetCore.CrossCutting.Mappings
             CreateMap<UserDtoCreateResult, UserEntity>().ReverseMap();
 
             CreateMap<UserDtoUpdateResult, UserEntity>().ReverseMap();
-
+            CreateMap<UserDto, UserEntity>().ReverseMap();
+            
         }
     }
 }

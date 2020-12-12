@@ -27,16 +27,16 @@ namespace ApiNetCore.Service.Services
             return await _repository.DeleteAsync(id);
         }
 
-        public async Task<UserDtoCreate> Get(Guid id)
+        public async Task<UserDto> Get(Guid id)
         {
             UserEntity entity = await _repository.SelectAsync(id);
-            return _mapper.Map<UserDtoCreate>(entity);
+            return _mapper.Map<UserDto>(entity);
         }
 
-        public async Task<IEnumerable<UserDtoCreate>> GetAll()
+        public async Task<IEnumerable<UserDto>> GetAll()
         {
             IEnumerable<UserEntity> entities = await _repository.SelectAsync();
-            return _mapper.Map<IEnumerable<UserDtoCreate>>(entities);
+            return _mapper.Map<IEnumerable<UserDto>>(entities);
         }
 
         public async Task<UserDtoCreateResult> Post(UserDtoCreate user)
