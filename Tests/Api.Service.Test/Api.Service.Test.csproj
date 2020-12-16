@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ApiNetCore.CrossCutting\ApiNetCore.CrossCutting.csproj" />
-    <ProjectReference Include="..\ApiNetCore.Domain\ApiNetCore.Domain.csproj" />
-    <ProjectReference Include="..\ApiNetCore.Service\ApiNetCore.Service.csproj" />
+    <ProjectReference Include="..\..\ApiNetCore.CrossCutting\ApiNetCore.CrossCutting.csproj" />
+    <ProjectReference Include="..\..\ApiNetCore.Domain\ApiNetCore.Domain.csproj" />
+    <ProjectReference Include="..\..\ApiNetCore.Service\ApiNetCore.Service.csproj" />
   </ItemGroup>
 
 </Project>
