@@ -22,7 +22,7 @@ namespace ApiNetCore.Application.Controllers
             _service = service;
         }
 
-        [Authorize("Bearer")]
+        [Authorize("Bearer"/*, Roles = "teste")*/)]
         [HttpGet]
         public async Task<ActionResult> GetAll()
         {

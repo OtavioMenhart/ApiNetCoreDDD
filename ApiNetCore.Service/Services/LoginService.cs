@@ -48,6 +48,7 @@ namespace ApiNetCore.Service.Services
                         {
                             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                             new Claim(JwtRegisteredClaimNames.UniqueName, user.Email),
+                            //new Claim(ClaimTypes.Role, "admin")
                         }
                         );
                     DateTime createdDate = DateTime.UtcNow;
@@ -77,8 +78,10 @@ namespace ApiNetCore.Service.Services
                 SigningCredentials = _signingConfigurations.SigningCredentials,
                 Subject = identity,
                 NotBefore = createDate,
-                Expires = expirationDate
+                Expires = expirationDate                
             });
+
+
             var token = handler.WriteToken(securityToken);
             return token;
         }
