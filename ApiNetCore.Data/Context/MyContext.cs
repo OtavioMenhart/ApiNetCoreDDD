@@ -20,6 +20,15 @@ namespace ApiNetCore.Data.Context
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<UserEntity>(new UserMap().Configure);
+
+            modelBuilder.Entity<UserEntity>().HasData(new Domain.Entities.UserEntity
+            {
+                Id = Guid.NewGuid(),
+                CreateAt = DateTime.UtcNow,
+                Name = "Otávio",
+                Email = "otavio@gmail.com",
+                UpdateAt = DateTime.UtcNow
+            });
         }
     }
 }
